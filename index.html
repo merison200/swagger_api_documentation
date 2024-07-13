@@ -1,0 +1,3404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HNG Stage 3 Backend</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+
+      .license-url {
+        margin-left: 20px;
+      }
+
+      .model {
+        margin: 0 0 0px 20px;
+      }
+
+      .method {
+        margin-left: 20px;
+      }
+
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+
+      .http-method {
+       text-transform: uppercase;
+      }
+
+      pre.get {
+        background-color: #0f6ab4;
+      }
+
+      pre.post {
+        background-color: #10a54a;
+      }
+
+      pre.put {
+        background-color: #c5862b;
+      }
+
+      pre.delete {
+        background-color: #a41e22;
+      }
+
+      .huge	{
+      	color: #fff;
+      }
+
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+
+      code {
+        white-space: pre;
+      }
+
+      .nickname {
+        font-weight: bold;
+      }
+
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+
+      .up {
+        float:right;
+      }
+
+      .parameter {
+        width: 500px;
+      }
+
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+
+      .param-type {
+        font-style: italic;
+      }
+
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+
+      .param-header {
+        font-weight: bold;
+      }
+
+      .method-tags {
+        text-align: right;
+      }
+
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+<h1>HNG Stage 3 Backend</h1>
+<div class="app-desc">This is a HNG Stage 3 Backend task</div>
+<div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+<div class="app-desc">Contact Info: <a href="you@your-company.com">you@your-company.com</a></div>
+<div class="app-desc">Version: 1.0.0</div>
+<div class="app-desc">BasePath:/GITHUKUELIUD/HNG-Stage-3/1.0.0</div>
+<div class="license-info">Apache 2.0</div>
+<div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+<h2>Access</h2>
+
+<h2><a name="__Methods">Methods</a></h2>
+[ Jump to <a href="#__Models">Models</a> ]
+
+<h3>Table of Contents </h3>
+<div class="method-summary"></div>
+<h4><a href="#Admins">Admins</a></h4>
+<ul>
+    <li><a href="#addUser"><code><span class="http-method">post</span> /admin/users</code></a></li>
+    <li><a href="#adminGetAllNotifications"><code><span class="http-method">get</span> /admin/notifications</code></a></li>
+    <li><a href="#adminGetAllUsers"><code><span class="http-method">get</span> /admin/users</code></a></li>
+    <li><a href="#adminUpdateBlog"><code><span class="http-method">put</span> /admin/blogs/{blogId}</code></a></li>
+    <li><a href="#adminUpdateNotification"><code><span class="http-method">put</span> /admin/notifications/{notificationId}</code></a></li>
+    <li><a href="#adminUpdateUser"><code><span class="http-method">put</span> /admin/users/{userId}</code></a></li>
+    <li><a href="#deleteBlog"><code><span class="http-method">delete</span> /admin/blogs/{blogId}</code></a></li>
+    <li><a href="#deleteNotification"><code><span class="http-method">delete</span> /admin/notifications/{notificationId}</code></a></li>
+    <li><a href="#deleteUser"><code><span class="http-method">delete</span> /admin/users/{userId}</code></a></li>
+    <li><a href="#sendNotification"><code><span class="http-method">post</span> /admin/notifications</code></a></li>
+</ul>
+<h4><a href="#Authentication">Authentication</a></h4>
+<ul>
+    <li><a href="#changePassword"><code><span class="http-method">post</span> /auth/change-password</code></a></li>
+    <li><a href="#loginUser"><code><span class="http-method">post</span> /auth/login</code></a></li>
+    <li><a href="#refreshAccessToken"><code><span class="http-method">post</span> /auth/refresh-token</code></a></li>
+    <li><a href="#registerUser"><code><span class="http-method">post</span> /auth/register</code></a></li>
+    <li><a href="#requestMagicLink"><code><span class="http-method">post</span> /auth/magic-link</code></a></li>
+    <li><a href="#socialAuth"><code><span class="http-method">post</span> /auth/social</code></a></li>
+    <li><a href="#verifyMagicLink"><code><span class="http-method">post</span> /auth/magic-link/verify</code></a></li>
+</ul>
+<h4><a href="#Blogs">Blogs</a></h4>
+<ul>
+    <li><a href="#getBlogById"><code><span class="http-method">get</span> /user/blog/{blogId}</code></a></li>
+</ul>
+<h4><a href="#Organisations">Organisations</a></h4>
+<ul>
+    <li><a href="#addUserToOrganisation"><code><span class="http-method">post</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#createOrganisation"><code><span class="http-method">post</span> /organisations</code></a></li>
+    <li><a href="#deleteOrganisation"><code><span class="http-method">delete</span> /organisations/{organisationId}</code></a></li>
+    <li><a href="#editUserRoleInOrganisation"><code><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></a></li>
+    <li><a href="#getAllOrganisations"><code><span class="http-method">get</span> /organisations</code></a></li>
+    <li><a href="#getAllUsersInOrganisation"><code><span class="http-method">get</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#getOrganisationById"><code><span class="http-method">get</span> /organisations/{organisationId}</code></a></li>
+    <li><a href="#updateOrganisation"><code><span class="http-method">put</span> /organisations/{organisationId}</code></a></li>
+</ul>
+<h4><a href="#Payments">Payments</a></h4>
+<ul>
+    <li><a href="#addPayment"><code><span class="http-method">post</span> /payment</code></a></li>
+    <li><a href="#getAllPayments"><code><span class="http-method">get</span> /payment</code></a></li>
+    <li><a href="#getPaymentById"><code><span class="http-method">get</span> /payments/{paymentId}</code></a></li>
+    <li><a href="#updatePayment"><code><span class="http-method">put</span> /payments/{paymentId}</code></a></li>
+</ul>
+<h4><a href="#Superadmin">Superadmin</a></h4>
+<ul>
+    <li><a href="#addUserToOrganisation"><code><span class="http-method">post</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#editUserRoleInOrganisation"><code><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></a></li>
+    <li><a href="#getAllUsersInOrganisation"><code><span class="http-method">get</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#superadminCreateEmailTemplate"><code><span class="http-method">post</span> /superadmin/email-templates</code></a></li>
+    <li><a href="#superadminDeleteEmailTemplate"><code><span class="http-method">delete</span> /superadmin/email-templates/{templateId}</code></a></li>
+    <li><a href="#superadminGetActivityLog"><code><span class="http-method">get</span> /superadmin/activity-log</code></a></li>
+    <li><a href="#superadminGetAllEmailTemplates"><code><span class="http-method">get</span> /superadmin/email-templates</code></a></li>
+    <li><a href="#superadminGetAllOrganisations"><code><span class="http-method">get</span> /superadmin/organisations</code></a></li>
+    <li><a href="#superadminGetAllPayments"><code><span class="http-method">get</span> /superadmin/payments</code></a></li>
+    <li><a href="#superadminGetAllUsers"><code><span class="http-method">get</span> /superadmin/users</code></a></li>
+    <li><a href="#superadminGetEmailTemplate"><code><span class="http-method">get</span> /superadmin/email-templates/{templateId}</code></a></li>
+    <li><a href="#superadminUpdateEmailTemplate"><code><span class="http-method">put</span> /superadmin/email-templates/{templateId}</code></a></li>
+</ul>
+<h4><a href="#User">User</a></h4>
+<ul>
+    <li><a href="#userGetAllNotifications"><code><span class="http-method">get</span> /user/notifications</code></a></li>
+    <li><a href="#userGetNotificationById"><code><span class="http-method">get</span> /user/notifications/{notificationId}</code></a></li>
+</ul>
+<h4><a href="#Users">Users</a></h4>
+<ul>
+    <li><a href="#addUserToOrganisation"><code><span class="http-method">post</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#createUser"><code><span class="http-method">post</span> /users</code></a></li>
+    <li><a href="#editUserRoleInOrganisation"><code><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></a></li>
+    <li><a href="#getAllUsers"><code><span class="http-method">get</span> /users</code></a></li>
+    <li><a href="#getAllUsersInOrganisation"><code><span class="http-method">get</span> /organisations/{organisationId}/users</code></a></li>
+    <li><a href="#getUserById"><code><span class="http-method">get</span> /users/{userId}</code></a></li>
+    <li><a href="#updateUser"><code><span class="http-method">put</span> /users/{userId}</code></a></li>
+    <li><a href="#userGetAllBlogs"><code><span class="http-method">get</span> /user/blogs</code></a></li>
+</ul>
+
+<h1><a name="Admins">Admins</a></h1>
+<div class="method"><a name="addUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/users</code></pre></div>
+    <div class="method-summary">Adds a user (<span class="nickname">addUser</span>)</div>
+    <div class="method-notes">Adds a user to the system</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object that needs to be added to the system </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : 1,
+    &quot;name&quot; : &quot;java dev&quot;,
+    &quot;email&quot; : &quot;javadev@example.com&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User created
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid user input, user not added
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    A user with provided details already exists
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="adminGetAllNotifications"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/notifications</code></pre></div>
+    <div class="method-summary">Returns all the notifications (<span class="nickname">adminGetAllNotifications</span>)</div>
+    <div class="method-notes">An admin has the ability to see all the notifications in the system</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#Notifications">Notifications</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "sender" : "admin@email.com",
+  "recipient" : "backend devs",
+  "timeSent" : "08:00am",
+  "notificationId" : "notification1",
+  "id" : "notification1",
+  "title" : "java devs meeting",
+  "body" : "There will be a stand up at 5:30pm kindly attend"
+}, {
+  "sender" : "admin@email.com",
+  "recipient" : "backend devs",
+  "timeSent" : "08:00am",
+  "notificationId" : "notification1",
+  "id" : "notification1",
+  "title" : "java devs meeting",
+  "body" : "There will be a stand up at 5:30pm kindly attend"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get all notifications in the system
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: notifications</div>
+    <pre class="example"><code>[{&quot;id&quot;:1,&quot;title&quot;:&quot;java devs meeting&quot;,&quot;body&quot;:&quot;There will be a stand up at 5:30pm kindly attend&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;recipient&quot;:&quot;backend devs&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;},{&quot;id&quot;:2,&quot;title&quot;:&quot;spring security bootcamp&quot;,&quot;body&quot;:&quot;There will be a bootcamp on Monday 5th May, 2023 on Spring security. Kindly purpose to attend.&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;recipient&quot;:&quot;backend devs&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="adminGetAllUsers"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/users</code></pre></div>
+    <div class="method-summary">Returns all the users (<span class="nickname">adminGetAllUsers</span>)</div>
+    <div class="method-notes">An admin has the ability to see all the users in the system</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get all users in the system
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: users</div>
+    <pre class="example"><code>[{&quot;id&quot;:1,&quot;name&quot;:&quot;java dev&quot;,&quot;email&quot;:&quot;javadev@example.com&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;spring boot&quot;,&quot;email&quot;:&quot;springboot@example.com&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="adminUpdateBlog"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /admin/blogs/{blogId}</code></pre></div>
+    <div class="method-summary">Edit blog details (<span class="nickname">adminUpdateBlog</span>)</div>
+    <div class="method-notes">Updates a blog in the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">blogId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the blog to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#Blogs">Blogs</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Blog object that needs to be updated </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : &quot;blog1&quot;,
+    &quot;title&quot; : &quot;Spring security update&quot;,
+    &quot;body&quot; : &quot;The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is more secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.&quot;,
+    &quot;sender&quot; : &quot;admin@email.com&quot;,
+    &quot;timeSent&quot; : &quot;08:00am&quot;,
+    &quot;date&quot; : &quot;25-06-2022&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Blog updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid blog input, notification not updated
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+    <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    A blog with provided id doesn&#x27;t exist
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="adminUpdateNotification"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /admin/notifications/{notificationId}</code></pre></div>
+    <div class="method-summary">Edit notification details (<span class="nickname">adminUpdateNotification</span>)</div>
+    <div class="method-notes">Updates a notification in the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">notificationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the notification to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#Notifications">Notifications</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Notification object that needs to be updated </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : 1,
+    &quot;title&quot; : &quot;java devs meeting&quot;,
+    &quot;body&quot; : &quot;There will be a stand up at 5:00pm kindly note the change in time and plan ahead.&quot;,
+    &quot;sender&quot; : &quot;admin@email.com&quot;,
+    &quot;recipient&quot; : &quot;backend devs&quot;,
+    &quot;timeSent&quot; : &quot;08:30am&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Notification updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid notification input, notification not updated
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Notification not found
+    <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    A notification with provided id doesn&#x27;t exist
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="adminUpdateUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /admin/users/{userId}</code></pre></div>
+    <div class="method-summary">Edit user details (<span class="nickname">adminUpdateUser</span>)</div>
+    <div class="method-notes">Updates a user in the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object that needs to be updated </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : 1,
+    &quot;name&quot; : &quot;java dev&quot;,
+    &quot;email&quot; : &quot;javadev@example.com&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid user input, user not updated
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    user not found
+    <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    A user with provided doesn&#x27;t exists
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="deleteBlog"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/blogs/{blogId}</code></pre></div>
+    <div class="method-summary">Delete a blog (<span class="nickname">deleteBlog</span>)</div>
+    <div class="method-notes">Deletes a blog from the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">blogId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the blog to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    Blog deleted
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid blog ID
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="deleteNotification"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/notifications/{notificationId}</code></pre></div>
+    <div class="method-summary">Delete a notification (<span class="nickname">deleteNotification</span>)</div>
+    <div class="method-notes">Deletes a notification from the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">notificationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the notification to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    Notification deleted
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid notification ID
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Notification not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="deleteUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/users/{userId}</code></pre></div>
+    <div class="method-summary">Delete a user (<span class="nickname">deleteUser</span>)</div>
+    <div class="method-notes">Deletes a user from the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    User deleted
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid user ID
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="sendNotification"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/notifications</code></pre></div>
+    <div class="method-summary">Sends a notification (<span class="nickname">sendNotification</span>)</div>
+    <div class="method-notes">Sends notification to the target users</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#Notifications">Notifications</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Notification object that needs to be added to the system </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : 3,
+    &quot;title&quot; : &quot;team outing&quot;,
+    &quot;body&quot; : &quot;There will be a team outing this Friday at 6:00pm. Kindly RSVP.&quot;,
+    &quot;sender&quot; : &quot;admin@email.com&quot;,
+    &quot;recipient&quot; : &quot;all employees&quot;,
+    &quot;timeSent&quot; : &quot;09:00am&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Notification sent
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid notification input, notification not sent
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Authentication">Authentication</a></h1>
+<div class="method"><a name="changePassword"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/change-password</code></pre></div>
+    <div class="method-summary">Change password (<span class="nickname">changePassword</span>)</div>
+    <div class="method-notes">Changes the user's password</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#ChangePasswordRequest">ChangePasswordRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Change password details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;oldPassword&quot; : &quot;oldpassword123&quot;,
+    &quot;newPassword&quot; : &quot;newpassword123&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Password changed successfully
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid password details
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="loginUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/login</code></pre></div>
+    <div class="method-summary">User login (<span class="nickname">loginUser</span>)</div>
+    <div class="method-notes">Logs in a user with email and password</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#LoginRequest">LoginRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Login details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;email&quot; : &quot;victor@example.com&quot;,
+    &quot;password&quot; : &quot;password123&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#AuthResponse">AuthResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "user" : {
+    "firstName" : "java",
+    "lastName" : "dev",
+    "userId" : "userId",
+    "email" : "javadev@example.com"
+  },
+  "token" : "jwt_token"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User logged in successfully
+    <a href="#AuthResponse">AuthResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid login details
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="refreshAccessToken"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/refresh-token</code></pre></div>
+    <div class="method-summary">Refresh Access Token (<span class="nickname">refreshAccessToken</span>)</div>
+    <div class="method-notes">Refreshes the user's access token</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#RefreshTokenRequest">RefreshTokenRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;refreshToken&quot; : &quot;your_refresh_token_here&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#AccessTokenResponse">AccessTokenResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "expiresIn" : 3600,
+  "accessToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvbGx5IEZpcnN0IiwiaWF0IjoxNTE2MjM5MDIyfQ.7weHsEFrBbFz-8Hg-ME4FROGzPsuq7hQFQUrjBJfmLo",
+  "tokenType" : "Bearer"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Access token refreshed successfully
+    <a href="#AccessTokenResponse">AccessTokenResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid refresh token details
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="registerUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/register</code></pre></div>
+    <div class="method-summary">User registration (<span class="nickname">registerUser</span>)</div>
+    <div class="method-notes">Registers a new user</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#RegisterRequest">RegisterRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Registration details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;firstName&quot; : &quot;Victor&quot;,
+    &quot;lastName&quot; : &quot;Adepoju&quot;,
+    &quot;email&quot; : &quot;user@example.com&quot;,
+    &quot;password&quot; : &quot;password123&quot;,
+    &quot;phone&quot; : &quot;08123456789&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User registered successfully
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid registration details
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="requestMagicLink"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/magic-link</code></pre></div>
+    <div class="method-summary">Request magic link (<span class="nickname">requestMagicLink</span>)</div>
+    <div class="method-notes">Sends a magic link to the user's email</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#MagicLinkRequest">MagicLinkRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Magic link request details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;email&quot; : &quot;victor@example.com&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Magic link sent successfully
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid email
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="socialAuth"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/social</code></pre></div>
+    <div class="method-summary">Social authentication (<span class="nickname">socialAuth</span>)</div>
+    <div class="method-notes">Logs in or registers a user using social authentication</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#SocialAuthRequest">SocialAuthRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Social authentication details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;provider&quot; : &quot;google&quot;,
+    &quot;token&quot; : &quot;socialauth_token&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#AuthResponse">AuthResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "user" : {
+    "firstName" : "java",
+    "lastName" : "dev",
+    "userId" : "userId",
+    "email" : "javadev@example.com"
+  },
+  "token" : "jwt_token"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Social authentication successful
+    <a href="#AuthResponse">AuthResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid social authentication details
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="verifyMagicLink"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/magic-link/verify</code></pre></div>
+    <div class="method-summary">Verify magic link (<span class="nickname">verifyMagicLink</span>)</div>
+    <div class="method-notes">Verifies the magic link</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#MagicLinkVerifyRequest">MagicLinkVerifyRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Magic link verification details </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;token&quot; : &quot;magic_link_token&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#AuthResponse">AuthResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "user" : {
+    "firstName" : "java",
+    "lastName" : "dev",
+    "userId" : "userId",
+    "email" : "javadev@example.com"
+  },
+  "token" : "jwt_token"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Magic link verified successfully
+    <a href="#AuthResponse">AuthResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid token
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Blogs">Blogs</a></h1>
+<div class="method"><a name="getBlogById"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /user/blog/{blogId}</code></pre></div>
+    <div class="method-summary">Get a blog by ID (<span class="nickname">getBlogById</span>)</div>
+    <div class="method-notes">Get details of a specific blog by its ID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">blogId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the blog to retrieve </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#Blogs">Blogs</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "date" : "0030-12-13T00:00:00.000+00:00",
+  "sender" : "admin@email.com",
+  "timeSent" : "08:00am",
+  "notificationId" : "blog1",
+  "id" : "blog1",
+  "title" : "Spring security update",
+  "body" : "The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure."
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Blog details
+    <a href="#Blogs">Blogs</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: blog</div>
+    <pre class="example"><code>{&quot;id&quot;:&quot;blog2&quot;,&quot;title&quot;:&quot;Onboarding documentaion&quot;,&quot;body&quot;:&quot;Welcome to our onboarding docs. To be able to onboard properly...&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;,&quot;date&quot;:&quot;30-01-2023&quot;}</code></pre>
+    <h4 class="field-label">400</h4>
+    Invalid payment ID
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Payment not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Organisations">Organisations</a></h1>
+<div class="method"><a name="addUserToOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Add a user to an organisation (<span class="nickname">addUserToOrganisation</span>)</div>
+    <div class="method-notes">Add a user to a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to add the user to </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object to be added </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User added to organisation
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="createOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /organisations</code></pre></div>
+    <div class="method-summary">Create an organisation (<span class="nickname">createOrganisation</span>)</div>
+    <div class="method-notes">Create a new organisation</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#Organisation">Organisation</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Organisation object to be created </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Organisation created
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="deleteOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="delete"><code class="huge"><span class="http-method">delete</span> /organisations/{organisationId}</code></pre></div>
+    <div class="method-summary">Delete an organisation (<span class="nickname">deleteOrganisation</span>)</div>
+    <div class="method-notes">Delete a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    Organisation deleted
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid ID
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="editUserRoleInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></pre></div>
+    <div class="method-summary">Edit user organisation role (<span class="nickname">editUserRoleInOrganisation</span>)</div>
+    <div class="method-notes">Edit a user role in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to edit the user role in </div>      <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user whose role is being edited </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#UserRoleRequest">UserRoleRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User role object to be edited </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#UserRoleResponse">UserRoleResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "organisationId" : "organisationId",
+    "role" : "ADMIN",
+    "userId" : "userId"
+  },
+  "success" : true,
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User role updated in organisation
+    <a href="#UserRoleResponse">UserRoleResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation or user not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllOrganisations"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /organisations</code></pre></div>
+    <div class="method-summary">Get all organisations (<span class="nickname">getAllOrganisations</span>)</div>
+    <div class="method-notes">Retrieve a list of all organisations</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#Organisation">Organisation</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "example organisation",
+  "ownerId" : "ownerId",
+  "userId" : "userId"
+}, {
+  "name" : "example organisation",
+  "ownerId" : "ownerId",
+  "userId" : "userId"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of organisations
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllUsersInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Get all users in an organisation (<span class="nickname">getAllUsersInOrganisation</span>)</div>
+    <div class="method-notes">Retrieve a list of all users in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to retrieve users from </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of users
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getOrganisationById"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /organisations/{organisationId}</code></pre></div>
+    <div class="method-summary">Get an organisation by ID (<span class="nickname">getOrganisationById</span>)</div>
+    <div class="method-notes">Retrieve details of a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to retrieve </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#Organisation">Organisation</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "example organisation",
+  "ownerId" : "ownerId",
+  "userId" : "userId"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Organisation details
+    <a href="#Organisation">Organisation</a>
+    <h4 class="field-label">400</h4>
+    Invalid ID
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="updateOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /organisations/{organisationId}</code></pre></div>
+    <div class="method-summary">Update an organisation (<span class="nickname">updateOrganisation</span>)</div>
+    <div class="method-notes">Update details of a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#Organisation">Organisation</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Organisation object with updated details </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Organisation updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Payments">Payments</a></h1>
+<div class="method"><a name="addPayment"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /payment</code></pre></div>
+    <div class="method-summary">Adds a payment (<span class="nickname">addPayment</span>)</div>
+    <div class="method-notes">Adds a payment to the system</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#PaymentDto">PaymentDto</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payment object that needs to be added to the system </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;id&quot; : 1,
+    &quot;paymentId&quot; : &quot;adc2-skck-23k0-$9sc&quot;,
+    &quot;orderId&quot; : 101,
+    &quot;amount&quot; : 100,
+    &quot;paymentMethod&quot; : &quot;credit_card&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Payment created
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid payment input, payment not added
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllPayments"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /payment</code></pre></div>
+    <div class="method-summary">Returns all the payments (<span class="nickname">getAllPayments</span>)</div>
+    <div class="method-notes">An Admin can see all payments in the system</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#PaymentDto">PaymentDto</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "createdAt" : "2024-07-01T00:00:00.000+00:00",
+  "amount" : 100,
+  "orderId" : "101",
+  "paymentId" : "paymentId",
+  "paymentMethod" : "credit_card",
+  "id" : "wyeew34-e4ddd-3dd3r-432rf"
+}, {
+  "createdAt" : "2024-07-01T00:00:00.000+00:00",
+  "amount" : 100,
+  "orderId" : "101",
+  "paymentId" : "paymentId",
+  "paymentMethod" : "credit_card",
+  "id" : "wyeew34-e4ddd-3dd3r-432rf"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get all payments in the system
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: payments</div>
+    <pre class="example"><code>[{&quot;paymentId&quot;:&quot;adc2-skck-23k0-$9sc&quot;,&quot;orderId&quot;:101,&quot;amount&quot;:100,&quot;paymentMethod&quot;:&quot;credit_card&quot;,&quot;createdAt&quot;:&quot;2024-07-01&quot;,&quot;completedAt&quot;:&quot;2024-07-01&quot;},{&quot;paymentId&quot;:&quot;adc2-skck-23k0-$9sc&quot;,&quot;orderId&quot;:102,&quot;amount&quot;:200,&quot;paymentMethod&quot;:&quot;paypal&quot;,&quot;createdAt&quot;:&quot;2024-07-02&quot;,&quot;completedAt&quot;:&quot;2024-07-02&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getPaymentById"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /payments/{paymentId}</code></pre></div>
+    <div class="method-summary">Get a payment by ID (<span class="nickname">getPaymentById</span>)</div>
+    <div class="method-notes">Get details of a specific payment by its ID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">paymentId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the payment to retrieve </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#PaymentDto">PaymentDto</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "createdAt" : "2024-07-01T00:00:00.000+00:00",
+  "amount" : 100,
+  "orderId" : "101",
+  "paymentId" : "paymentId",
+  "paymentMethod" : "credit_card",
+  "id" : "wyeew34-e4ddd-3dd3r-432rf"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Payment details
+    <a href="#PaymentDto">PaymentDto</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: payment</div>
+    <pre class="example"><code>{&quot;id&quot;:1,&quot;paymentId&quot;:&quot;adc2-skck-23k0-$9sc&quot;,&quot;orderId&quot;:101,&quot;amount&quot;:100,&quot;paymentMethod&quot;:&quot;credit_card&quot;,&quot;createdAt&quot;:&quot;2024-07-01&quot;,&quot;completedAt&quot;:&quot;2024-07-01&quot;}</code></pre>
+    <h4 class="field-label">400</h4>
+    Invalid payment ID
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Payment not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="updatePayment"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /payments/{paymentId}</code></pre></div>
+    <div class="method-summary">Update a payment by ID (<span class="nickname">updatePayment</span>)</div>
+    <div class="method-notes">Updates a payment in the system</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">paymentId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the payment to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#PaymentDto">PaymentDto</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payment object that needs to be updated </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;amount&quot; : 100,
+    &quot;paymentMethod&quot; : &quot;credit_card&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Payment updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid payment input, payment not updated
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Bad request
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Payment not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Superadmin">Superadmin</a></h1>
+<div class="method"><a name="addUserToOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Add a user to an organisation (<span class="nickname">addUserToOrganisation</span>)</div>
+    <div class="method-notes">Add a user to a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to add the user to </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object to be added </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User added to organisation
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="editUserRoleInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></pre></div>
+    <div class="method-summary">Edit user organisation role (<span class="nickname">editUserRoleInOrganisation</span>)</div>
+    <div class="method-notes">Edit a user role in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to edit the user role in </div>      <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user whose role is being edited </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#UserRoleRequest">UserRoleRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User role object to be edited </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#UserRoleResponse">UserRoleResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "organisationId" : "organisationId",
+    "role" : "ADMIN",
+    "userId" : "userId"
+  },
+  "success" : true,
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User role updated in organisation
+    <a href="#UserRoleResponse">UserRoleResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation or user not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllUsersInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Get all users in an organisation (<span class="nickname">getAllUsersInOrganisation</span>)</div>
+    <div class="method-notes">Retrieve a list of all users in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to retrieve users from </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of users
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminCreateEmailTemplate"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /superadmin/email-templates</code></pre></div>
+    <div class="method-summary">Superadmin create an email template (<span class="nickname">superadminCreateEmailTemplate</span>)</div>
+    <div class="method-notes">Superadmin creates a new email template</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#EmailTemplate">EmailTemplate</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Email template object that needs to be added to the system </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;templateId&quot; : &quot;email1&quot;,
+    &quot;name&quot; : &quot;Welcome Email&quot;,
+    &quot;subject&quot; : &quot;Welcome to our service!&quot;,
+    &quot;body&quot; : &quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome&lt;/h1&gt;&lt;p&gt;Thanks for joining us!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Email template created
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input, template not created
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminDeleteEmailTemplate"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="delete"><code class="huge"><span class="http-method">delete</span> /superadmin/email-templates/{templateId}</code></pre></div>
+    <div class="method-summary">Superadmin delete an email template (<span class="nickname">superadminDeleteEmailTemplate</span>)</div>
+    <div class="method-notes">Superadmin deletes a specific email template</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">templateId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the email template to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    Email template deleted
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid template ID
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Template not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetActivityLog"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/activity-log</code></pre></div>
+    <div class="method-summary">Superadmin get activity log (<span class="nickname">superadminGetActivityLog</span>)</div>
+    <div class="method-notes">Superadmin retrieves the activity log</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#ActivityLog">ActivityLog</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "action" : "login",
+  "id" : "wyey234-4244ddd-32443r-432rf",
+  "userId" : 1,
+  "timestamp" : "2023-07-13T15:26:10Z"
+}, {
+  "action" : "login",
+  "id" : "wyey234-4244ddd-32443r-432rf",
+  "userId" : 1,
+  "timestamp" : "2023-07-13T15:26:10Z"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Activity log
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetAllEmailTemplates"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/email-templates</code></pre></div>
+    <div class="method-summary">Superadmin get all email templates (<span class="nickname">superadminGetAllEmailTemplates</span>)</div>
+    <div class="method-notes">Superadmin retrieves all email templates</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#EmailTemplate">EmailTemplate</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "subject" : "subject",
+  "name" : "name",
+  "templateId" : "email1",
+  "body" : "body"
+}, {
+  "subject" : "subject",
+  "name" : "name",
+  "templateId" : "email1",
+  "body" : "body"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of email templates
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetAllOrganisations"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/organisations</code></pre></div>
+    <div class="method-summary">Superadmin get all organisations (<span class="nickname">superadminGetAllOrganisations</span>)</div>
+    <div class="method-notes">Superadmin retrieves all organisations</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#Organisation">Organisation</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "example organisation",
+  "ownerId" : "ownerId",
+  "userId" : "userId"
+}, {
+  "name" : "example organisation",
+  "ownerId" : "ownerId",
+  "userId" : "userId"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of organisations
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetAllPayments"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/payments</code></pre></div>
+    <div class="method-summary">Superadmin get all payments (<span class="nickname">superadminGetAllPayments</span>)</div>
+    <div class="method-notes">Superadmin retrieves all payments</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#PaymentDto">PaymentDto</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "createdAt" : "2024-07-01T00:00:00.000+00:00",
+  "amount" : 100,
+  "orderId" : "101",
+  "paymentId" : "paymentId",
+  "paymentMethod" : "credit_card",
+  "id" : "wyeew34-e4ddd-3dd3r-432rf"
+}, {
+  "createdAt" : "2024-07-01T00:00:00.000+00:00",
+  "amount" : 100,
+  "orderId" : "101",
+  "paymentId" : "paymentId",
+  "paymentMethod" : "credit_card",
+  "id" : "wyeew34-e4ddd-3dd3r-432rf"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of payments
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetAllUsers"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/users</code></pre></div>
+    <div class="method-summary">Superadmin get all users (<span class="nickname">superadminGetAllUsers</span>)</div>
+    <div class="method-notes">Superadmin retrieves all users</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of users
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminGetEmailTemplate"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /superadmin/email-templates/{templateId}</code></pre></div>
+    <div class="method-summary">Superadmin get an email template (<span class="nickname">superadminGetEmailTemplate</span>)</div>
+    <div class="method-notes">Superadmin retrieves a specific email template</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">templateId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the email template to retrieve </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#EmailTemplate">EmailTemplate</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "subject" : "subject",
+  "name" : "name",
+  "templateId" : "email1",
+  "body" : "body"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    An email template
+    <a href="#EmailTemplate">EmailTemplate</a>
+    <h4 class="field-label">400</h4>
+    Invalid template ID
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Template not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="superadminUpdateEmailTemplate"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /superadmin/email-templates/{templateId}</code></pre></div>
+    <div class="method-summary">Superadmin update an email template (<span class="nickname">superadminUpdateEmailTemplate</span>)</div>
+    <div class="method-notes">Superadmin updates a specific email template</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">templateId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the email template to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#EmailTemplate">EmailTemplate</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Email template object that needs to be updated </div>
+        <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;value&quot; : {
+    &quot;templateId&quot; : &quot;email1&quot;,
+    &quot;name&quot; : &quot;Welcome Email&quot;,
+    &quot;subject&quot; : &quot;Welcome to our service!&quot;,
+    &quot;body&quot; : &quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome&lt;/h1&gt;&lt;p&gt;Thanks for joining us!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;
+  }
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Email template updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input, template not updated
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Template not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="User">User</a></h1>
+<div class="method"><a name="userGetAllNotifications"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /user/notifications</code></pre></div>
+    <div class="method-summary">Returns all the notifications (<span class="nickname">userGetAllNotifications</span>)</div>
+    <div class="method-notes">user user has the ability to see all the notifications in their department, or the ones sent to them directly</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#Notifications">Notifications</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "sender" : "admin@email.com",
+  "recipient" : "backend devs",
+  "timeSent" : "08:00am",
+  "notificationId" : "notification1",
+  "id" : "notification1",
+  "title" : "java devs meeting",
+  "body" : "There will be a stand up at 5:30pm kindly attend"
+}, {
+  "sender" : "admin@email.com",
+  "recipient" : "backend devs",
+  "timeSent" : "08:00am",
+  "notificationId" : "notification1",
+  "id" : "notification1",
+  "title" : "java devs meeting",
+  "body" : "There will be a stand up at 5:30pm kindly attend"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get all notifications in their department, or the ones sent to them directl
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: notifications</div>
+    <pre class="example"><code>[{&quot;id&quot;:&quot;notification1&quot;,&quot;title&quot;:&quot;java devs meeting&quot;,&quot;body&quot;:&quot;There will be a stand up at 5:30pm kindly attend&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;recipient&quot;:&quot;backend devs&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;},{&quot;id&quot;:&quot;notification2&quot;,&quot;title&quot;:&quot;spring security bootcamp&quot;,&quot;body&quot;:&quot;There will be a bootcamp on Monday 5th May, 2023 on Spring security. Kindly purpose to attend.&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;recipient&quot;:&quot;backend devs&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="userGetNotificationById"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /user/notifications/{notificationId}</code></pre></div>
+    <div class="method-summary">Returns the notification requested (<span class="nickname">userGetNotificationById</span>)</div>
+    <div class="method-notes">user user has the ability to see one of the notifications in their department, or the ones sent to them directly</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">notificationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the notification to return </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#Notifications">Notifications</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "sender" : "admin@email.com",
+  "recipient" : "backend devs",
+  "timeSent" : "08:00am",
+  "notificationId" : "notification1",
+  "id" : "notification1",
+  "title" : "java devs meeting",
+  "body" : "There will be a stand up at 5:30pm kindly attend"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get one of the notifications in their department, or the ones sent to them directl
+    <a href="#Notifications">Notifications</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: notifications</div>
+    <pre class="example"><code>[{&quot;id&quot;:&quot;notification1&quot;,&quot;title&quot;:&quot;java devs meeting&quot;,&quot;body&quot;:&quot;There will be a stand up at 5:30pm kindly attend&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;recipient&quot;:&quot;backend devs&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<h1><a name="Users">Users</a></h1>
+<div class="method"><a name="addUserToOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Add a user to an organisation (<span class="nickname">addUserToOrganisation</span>)</div>
+    <div class="method-notes">Add a user to a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to add the user to </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object to be added </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User added to organisation
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="createUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="post"><code class="huge"><span class="http-method">post</span> /users</code></pre></div>
+    <div class="method-summary">Create a user (<span class="nickname">createUser</span>)</div>
+    <div class="method-notes">Create a new user</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object to be created </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User created
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="editUserRoleInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /organisations/{organisationId}/roles/{userId}</code></pre></div>
+    <div class="method-summary">Edit user organisation role (<span class="nickname">editUserRoleInOrganisation</span>)</div>
+    <div class="method-notes">Edit a user role in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to edit the user role in </div>      <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user whose role is being edited </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#UserRoleRequest">UserRoleRequest</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User role object to be edited </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#UserRoleResponse">UserRoleResponse</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "organisationId" : "organisationId",
+    "role" : "ADMIN",
+    "userId" : "userId"
+  },
+  "success" : true,
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User role updated in organisation
+    <a href="#UserRoleResponse">UserRoleResponse</a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation or user not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllUsers"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /users</code></pre></div>
+    <div class="method-summary">Get all users (<span class="nickname">getAllUsers</span>)</div>
+    <div class="method-notes">Retrieve a list of all users</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of users
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getAllUsersInOrganisation"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /organisations/{organisationId}/users</code></pre></div>
+    <div class="method-summary">Get all users in an organisation (<span class="nickname">getAllUsersInOrganisation</span>)</div>
+    <div class="method-notes">Retrieve a list of all users in a specific organisation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">organisationId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the organisation to retrieve users from </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#User">User</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}, {
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of users
+
+    <h4 class="field-label">400</h4>
+    Invalid request
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Organisation not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="getUserById"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{userId}</code></pre></div>
+    <div class="method-summary">Get a user by ID (<span class="nickname">getUserById</span>)</div>
+    <div class="method-notes">Retrieve details of a specific user</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user to retrieve </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        <a href="#User">User</a>
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "firstName" : "java",
+  "lastName" : "dev",
+  "userId" : "userId",
+  "email" : "javadev@example.com"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User details
+    <a href="#User">User</a>
+    <h4 class="field-label">400</h4>
+    Invalid ID
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="updateUser"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="put"><code class="huge"><span class="http-method">put</span> /users/{userId}</code></pre></div>
+    <div class="method-summary">Update a user (<span class="nickname">updateUser</span>)</div>
+    <div class="method-notes">Update details of a specific user</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+        <div class="param">userId (required)</div>
+
+        <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the user to update </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+        <div class="param">body <a href="#User">User</a> (required)</div>
+
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User object with updated details </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    User updated
+    <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid input
+    <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+<div class="method"><a name="userGetAllBlogs"></a>
+    <div class="method-path">
+        <a class="up" href="#__Methods">Up</a>
+        <pre class="get"><code class="huge"><span class="http-method">get</span> /user/blogs</code></pre></div>
+    <div class="method-summary">Returns all the blogs (<span class="nickname">userGetAllBlogs</span>)</div>
+    <div class="method-notes">A user has the ability to see all the blogs in the system</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+        array[<a href="#Blogs">Blogs</a>]
+
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "date" : "0030-12-13T00:00:00.000+00:00",
+  "sender" : "admin@email.com",
+  "timeSent" : "08:00am",
+  "notificationId" : "blog1",
+  "id" : "blog1",
+  "title" : "Spring security update",
+  "body" : "The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure."
+}, {
+  "date" : "0030-12-13T00:00:00.000+00:00",
+  "sender" : "admin@email.com",
+  "timeSent" : "08:00am",
+  "notificationId" : "blog1",
+  "id" : "blog1",
+  "title" : "Spring security update",
+  "body" : "The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure."
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+        <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Get all blogs in the system
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: blogs</div>
+    <pre class="example"><code>[{&quot;id&quot;:&quot;blog1&quot;,&quot;title&quot;:&quot;Spring security update&quot;,&quot;body&quot;:&quot;The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;,&quot;date&quot;:&quot;25-06-2022&quot;},{&quot;id&quot;:&quot;blog2&quot;,&quot;title&quot;:&quot;Onboarding documentaion&quot;,&quot;body&quot;:&quot;Welcome to our onboarding docs. To be able to onboard properly...&quot;,&quot;sender&quot;:&quot;admin@email.com&quot;,&quot;timeSent&quot;:&quot;08:00am&quot;,&quot;date&quot;:&quot;30-01-2023&quot;}]</code></pre>
+    <h4 class="field-label">400</h4>
+    Bad input parameter
+    <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+    <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not found
+    <a href="#"></a>
+</div> <!-- method -->
+<hr/>
+
+<h2><a name="__Models">Models</a></h2>
+[ Jump to <a href="#__Methods">Methods</a> ]
+
+<h3>Table of Contents</h3>
+<ol>
+    <li><a href="#AccessTokenResponse"><code>AccessTokenResponse</code></a></li>
+    <li><a href="#ActivityLog"><code>ActivityLog</code></a></li>
+    <li><a href="#AuthResponse"><code>AuthResponse</code></a></li>
+    <li><a href="#Blogs"><code>Blogs</code></a></li>
+    <li><a href="#ChangePasswordRequest"><code>ChangePasswordRequest</code></a></li>
+    <li><a href="#EmailTemplate"><code>EmailTemplate</code></a></li>
+    <li><a href="#LoginRequest"><code>LoginRequest</code></a></li>
+    <li><a href="#MagicLinkRequest"><code>MagicLinkRequest</code></a></li>
+    <li><a href="#MagicLinkVerifyRequest"><code>MagicLinkVerifyRequest</code></a></li>
+    <li><a href="#Notifications"><code>Notifications</code></a></li>
+    <li><a href="#Organisation"><code>Organisation</code></a></li>
+    <li><a href="#PaymentDto"><code>PaymentDto</code></a></li>
+    <li><a href="#RefreshTokenRequest"><code>RefreshTokenRequest</code></a></li>
+    <li><a href="#RegisterRequest"><code>RegisterRequest</code></a></li>
+    <li><a href="#SocialAuthRequest"><code>SocialAuthRequest</code></a></li>
+    <li><a href="#User"><code>User</code></a></li>
+    <li><a href="#UserRoleRequest"><code>UserRoleRequest</code></a></li>
+    <li><a href="#UserRoleResponse"><code>UserRoleResponse</code></a></li>
+    <li><a href="#UserRoleResponse_data"><code>UserRoleResponse_data</code></a></li>
+</ol>
+
+<div class="model">
+    <h3><a name="AccessTokenResponse"><code>AccessTokenResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">accessToken (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The newly generated access token. </div>
+        <div class="param-desc"><span class="param-type">example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvbGx5IEZpcnN0IiwiaWF0IjoxNTE2MjM5MDIyfQ.7weHsEFrBbFz-8Hg-ME4FROGzPsuq7hQFQUrjBJfmLo</span></div>
+        <div class="param">tokenType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of token issued (e.g., Bearer). </div>
+        <div class="param-desc"><span class="param-type">example: Bearer</span></div>
+        <div class="param">expiresIn (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The duration in seconds for which the access token is valid. </div>
+        <div class="param-desc"><span class="param-type">example: 3600</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="ActivityLog"><code>ActivityLog</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: wyey234-4244ddd-32443r-432rf</span></div>
+        <div class="param">action (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: login</span></div>
+        <div class="param">timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+        <div class="param-desc"><span class="param-type">example: 2023-07-13T15:26:10Z</span></div>
+        <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: 1</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="AuthResponse"><code>AuthResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: jwt_token</span></div>
+        <div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="Blogs"><code>Blogs</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: blog1</span></div>
+        <div class="param">notificationId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: blog1</span></div>
+        <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: Spring security update</span></div>
+        <div class="param">body (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: The spring security team had their anuall code update to ensure system is secure. The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.The spring security team had their anuall code update to ensure system is secure.</span></div>
+        <div class="param">sender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: admin@email.com</span></div>
+        <div class="param">timeSent (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+        <div class="param-desc"><span class="param-type">example: 08:00am</span></div>
+        <div class="param">date (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+        <div class="param-desc"><span class="param-type">example: Wed Dec 13 00:00:00 GMT 30</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="ChangePasswordRequest"><code>ChangePasswordRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">oldPassword (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: oldpassword123</span></div>
+        <div class="param">newPassword (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: newpassword123</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="EmailTemplate"><code>EmailTemplate</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">templateId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: email1</span></div>
+        <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param">subject (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param">body (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: html</div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="LoginRequest"><code>LoginRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: email</div>
+        <div class="param-desc"><span class="param-type">example: victor@example.com</span></div>
+        <div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: password123</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="MagicLinkRequest"><code>MagicLinkRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: email</div>
+        <div class="param-desc"><span class="param-type">example: victor@example.com</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="MagicLinkVerifyRequest"><code>MagicLinkVerifyRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: magic_link_token</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="Notifications"><code>Notifications</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: notification1</span></div>
+        <div class="param">notificationId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: notification1</span></div>
+        <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: java devs meeting</span></div>
+        <div class="param">body (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: There will be a stand up at 5:30pm kindly attend</span></div>
+        <div class="param">sender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: admin@email.com</span></div>
+        <div class="param">recipient (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: backend devs</span></div>
+        <div class="param">timeSent (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: time</div>
+        <div class="param-desc"><span class="param-type">example: 08:00am</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="Organisation"><code>Organisation</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: example organisation</span></div>
+        <div class="param">ownerId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="PaymentDto"><code>PaymentDto</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: wyeew34-e4ddd-3dd3r-432rf</span></div>
+        <div class="param">paymentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param">orderId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: 101</span></div>
+        <div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+        <div class="param-desc"><span class="param-type">example: Mon Jul 01 00:00:00 GMT 2024</span></div>
+        <div class="param">amount (optional)</div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span>  format: float</div>
+        <div class="param-desc"><span class="param-type">example: 100</span></div>
+        <div class="param">paymentMethod (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: credit_card</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="RefreshTokenRequest"><code>RefreshTokenRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">refreshToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The refresh token used to obtain a new access token. </div>
+        <div class="param-desc"><span class="param-type">example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="RegisterRequest"><code>RegisterRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">firstName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: Victor</span></div>
+        <div class="param">lastName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: Adepoju</span></div>
+        <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: email</div>
+        <div class="param-desc"><span class="param-type">example: victor@example.com</span></div>
+        <div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: password123</span></div>
+        <div class="param">phone (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: 8123456789</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="SocialAuthRequest"><code>SocialAuthRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">provider (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: google</span></div>
+        <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: socialauth_token</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="User"><code>User</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param">firstName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: java</span></div>
+        <div class="param">lastName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-desc"><span class="param-type">example: dev</span></div>
+        <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: email</div>
+        <div class="param-desc"><span class="param-type">example: javadev@example.com</span></div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="UserRoleRequest"><code>UserRoleRequest</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">role </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Role of the user in the organisation </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">ADMIN</div><div class="param-enum">MEMBER</div><div class="param-enum">GUEST</div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="UserRoleResponse"><code>UserRoleResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">success </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Indicates if the operation was successful </div>
+        <div class="param">message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A message providing additional information about the response </div>
+        <div class="param">data (optional)</div><div class="param-desc"><span class="param-type"><a href="#UserRoleResponse_data">UserRoleResponse_data</a></span>  </div>
+    </div>  <!-- field-items -->
+</div>
+<div class="model">
+    <h3><a name="UserRoleResponse_data"><code>UserRoleResponse_data</code></a> <a class="up" href="#__Models">Up</a></h3>
+
+    <div class="field-items">
+        <div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ID of the user whose role was updated </div>
+        <div class="param">organisationId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ID of the organisation where the role was updated </div>
+        <div class="param">role (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The new role of the user in the organisation </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">ADMIN</div><div class="param-enum">MEMBER</div><div class="param-enum">GUEST</div>
+    </div>  <!-- field-items -->
+</div>
+</body>
+</html>
